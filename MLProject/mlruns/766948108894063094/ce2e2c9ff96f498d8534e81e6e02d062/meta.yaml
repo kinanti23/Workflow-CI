@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/ASAH/Membangun_Model/mlruns/766948108894063094/ce2e2c9ff96f498d8534e81e6e02d062/artifacts
+end_time: 1765520766469
+entry_point_name: ''
+experiment_id: '766948108894063094'
+lifecycle_stage: active
+run_id: ce2e2c9ff96f498d8534e81e6e02d062
+run_name: RandomForest_Kinanti
+run_uuid: ce2e2c9ff96f498d8534e81e6e02d062
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1765520749120
+status: 3
+tags: []
+user_id: LENOVO

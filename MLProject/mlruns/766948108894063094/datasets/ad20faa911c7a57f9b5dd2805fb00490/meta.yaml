@@ -1,0 +1,12 @@
+digest: d764d799
+name: dataset
+profile: '{"num_rows": 667, "num_elements": 5336}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "region", "required": true},
+  {"type": "long", "name": "category", "required": true}, {"type": "long", "name":
+  "parameter", "required": true}, {"type": "long", "name": "mode", "required": true},
+  {"type": "long", "name": "powertrain", "required": true}, {"type": "long", "name":
+  "year", "required": true}, {"type": "long", "name": "unit", "required": true}, {"type":
+  "double", "name": "value_scaled", "required": true}]}'
+source: '{"tags": {"mlflow.user": "LENOVO", "mlflow.source.name": "modelling_subimission.py",
+  "mlflow.source.type": "LOCAL"}}'
+source_type: code

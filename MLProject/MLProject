@@ -1,0 +1,7 @@
+name: EV_Sales_Regression_Kinanti
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    command: "python modelling_subimission.py"
