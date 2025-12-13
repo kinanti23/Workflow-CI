@@ -72,13 +72,6 @@ def train_model(X_train, X_test, y_train, y_test, model_name):
             max_depth=10,
             random_state=42
         )
-
-        # Log parameter model
-        mlflow.log_param("model_type", "RandomForest")
-        mlflow.log_param("n_estimators", 150)
-        mlflow.log_param("max_depth", 10)
-        mlflow.log_param("random_state", 42)
-
     # Train
     model.fit(X_train, y_train)
 
