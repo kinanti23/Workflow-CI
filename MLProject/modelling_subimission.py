@@ -62,48 +62,42 @@ def train_model(X_train, X_test, y_train, y_test, model_name):
     # Mengaktifkan autolog
     mlflow.sklearn.autolog()
 
-    # Start MLflow Run
-    with mlflow.start_run(run_name=f"{model_name}_Kinanti"):
+    # Pilihan model
+    if model_name == "DecisionTree":
+        model = DecisionTreeRegressor(random_state=42)
 
-        # Pilihan model
-        if model_name == "DecisionTree":
-            model = DecisionTreeRegressor(random_state=42)
+        # Log parameter model
+        mlflow.log_param("model_type", "DecisionTree")
+        mlflow.log_param("random_state", 42)
 
-            # Log parameter model
-            mlflow.log_param("model_type", "DecisionTree")
-            mlflow.log_param("random_state", 42)
+    elif model_name == "RandomForest":
+        model = RandomForestRegressor(
+            n_estimators=150,
+            max_depth=10,
+            random_state=42
+        )
 
-        elif model_name == "RandomForest":
-            model = RandomForestRegressor(
-                n_estimators=150,
-                max_depth=10,
-                random_state=42
-            )
+        # Log parameter model
+        mlflow.log_param("model_type", "RandomForest")
+        mlflow.log_param("n_estimators", 150)
+        mlflow.log_param("max_depth", 10)
+        mlflow.log_param("random_state", 42)
 
-            # Log parameter model
-            mlflow.log_param("model_type", "RandomForest")
-            mlflow.log_param("n_estimators", 150)
-            mlflow.log_param("max_depth", 10)
-            mlflow.log_param("random_state", 42)
+    # Train
+    model.fit(X_train, y_train)
 
-        # Train
-        model.fit(X_train, y_train)
+    # Predict
+    pred = model.predict(X_test)
 
-        # Predict
-        pred = model.predict(X_test)
+    # Metrics
+    mse = mean_squared_error(y_test, pred)
+    r2 = r2_score(y_test, pred)
 
-        # Metrics
-        mse = mean_squared_error(y_test, pred)
-        r2 = r2_score(y_test, pred)
+    print(f"MSE Score: {mse}")
+    print(f"R² Score:  {r2}")
 
-        print(f"MSE Score: {mse}")
-        print(f"R² Score:  {r2}")
-
-        # Log metric manual (optional but rapi)
-        mlflow.log_metric("mse", mse)
-        mlflow.log_metric("r2_score", r2)
-
-        print("[INFO] Model selesai dilatih dan disimpan ke MLflow.")
+    # Tidak perlu mlflow.log_metric manual; autolog sudah menyimpan metrik
+    print("[INFO] Model selesai dilatih dan disimpan ke MLflow.")
 
 
 # =========================================================
