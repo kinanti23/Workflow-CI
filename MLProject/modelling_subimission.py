@@ -66,10 +66,6 @@ def train_model(X_train, X_test, y_train, y_test, model_name):
     if model_name == "DecisionTree":
         model = DecisionTreeRegressor(random_state=42)
 
-        # Log parameter model
-        mlflow.log_param("model_type", "DecisionTree")
-        mlflow.log_param("random_state", 42)
-
     elif model_name == "RandomForest":
         model = RandomForestRegressor(
             n_estimators=150,
