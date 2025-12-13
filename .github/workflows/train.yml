@@ -28,10 +28,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: 🤖 Train Model (Python)
+      - name: 🤖 Train Model with MLflow
         working-directory: MLProject
         run: |
-          python modelling_subimission.py
+          mlflow run . --env-manager local
 
       - name: 📦 Upload MLflow Artifacts
         uses: actions/upload-artifact@v4
